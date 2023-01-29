@@ -68,4 +68,4 @@ add_executable(xv6_labs_2020
         user/user.h
         user/usertests.c
         user/wc.c
-        user/zombie.c user/sleep.c)
+        user/zombie.c user/sleep.c user/common_kernel_head.h)

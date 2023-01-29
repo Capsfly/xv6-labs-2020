@@ -1,6 +1,4 @@
-#include "/home/suichunyu/Desktop/xv6-labs-2020/kernel/types.h"
-#include "/home/suichunyu/Desktop/xv6-labs-2020/kernel/stat.h"
-#include "/home/suichunyu/Desktop/xv6-labs-2020/user/user.h"
+#include "common_kernel_head.h"
 
 
 int main(int argc, char const *argv[])
