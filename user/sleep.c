@@ -13,6 +13,7 @@ int main(int argc, char const *argv[])
         int time= atoi(argv[1]);
         sleep(time);
         exit(0);
+
     }
 
 }
