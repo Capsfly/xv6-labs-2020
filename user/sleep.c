@@ -8,8 +8,11 @@ int main(int argc, char const *argv[])
         fprintf(2, "Usage: sleep <seconds>\n");
         exit(1);
     }
-    int time = atoi(argv[1]);
-    sleep(time);
+    else
+    {
+        int time = atoi(argv[1])*199;
+        sleep(time);
+        exit(0);
+    }
 
-    exit(0);
 }
