@@ -10,8 +10,7 @@ int main(int argc, char const *argv[])
     }
     else
     {
-        int time = atoi(argv[1])*199;
-        sleep(time);
+        sleep(0);
         exit(0);
     }
 
