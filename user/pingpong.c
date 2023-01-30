@@ -23,7 +23,7 @@ int main()
     {
         char send_data[]="received ping";
 
-        write(fields1[1], send_data, sizeof(send_data));
+        write(fields1[1], send_data, 1);
 
         wait(NULL);
 
@@ -34,7 +34,7 @@ int main()
 
         read(fields2[0], read_buf + strlen(read_buf), sizeof(read_buf) - sizeof(char) * strlen(read_buf));
 
-        printf("<parent> %s",read_buf);
+        printf("%d: received pong",getpid());
 //        fprintf(2,read_buf); maybe some bugs here
     }
     else//pid==0
@@ -43,9 +43,9 @@ int main()
         i2a(getpid(),read_buf);
         strcpy(read_buf+ strlen(read_buf),":");
 
-        read(fields1[0], read_buf + strlen(read_buf), sizeof(read_buf) - sizeof(char) * strlen(read_buf));
+        read(fields1[0], read_buf + strlen(read_buf), 1);
 
-        printf("<child> %s\n", read_buf);
+        printf("%d: received ping\n", getpid());
 
         char send_data[]="received pong";
 
