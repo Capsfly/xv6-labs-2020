@@ -2,13 +2,17 @@
 // Created by suichunyu on 1/29/23.
 //
 #include "common_kernel_head.h"
-#include "user.h"
+#include "my_function.c"
 #define NULL 0
 int main()
 {
     int pid=fork();
-    int fields[2];
-    pipe(fields);
+
+    int fields1[2];//father process sends data to son
+    pipe(fields1);
+
+    int fields2[2];//son process sends data to father
+    pipe(fields2);
 
     if(pid<0)
     {
@@ -17,23 +21,45 @@ int main()
     }
     else if(pid>0)
     {
-        const char *text="ping";
-        int a= strlen(text);
-        write(fields[1],text,strlen(text));
+        char send_data[]="received ping";
+
+        printf("write %d bytes\n", write(fields1[1], send_data, sizeof(send_data)));
+
         wait(NULL);
-        char buf[50];
-        read(fields[0],buf,sizeof(buf));
-        char* container= malloc(20);
 
-        fprintf()
+        char read_buf[50];
+        i2a(getpid(),read_buf);
+
+        strcpy(read_buf+ strlen(read_buf),":");
+
+        read(fields2[0], read_buf + strlen(read_buf), sizeof(read_buf) - sizeof(char) * strlen(read_buf));
+
+        fprintf(2,read_buf);
     }
-    else
+    else//pid==0
     {
+        char test[150];
+
+        int cnt=read(fields1[0], test,8);
+        printf("%d",cnt);
+        printf("%s",test);
+
+        char read_buf[150];
+        i2a(getpid(),read_buf);
+
+        strcpy(read_buf+ strlen(read_buf),":");
+
+        strcpy(read_buf+ strlen(read_buf),test);
+        //read(fields1[0], read_buf + strlen(read_buf), sizeof(read_buf) - sizeof(char) * strlen(read_buf));
+
+        fprintf(2,read_buf);
+
+        char send_data[50]="received pong";
+
+        write(fields2[1], send_data, sizeof(send_data));
 
     }
-
-
-
+    exit(0);
 
 }
 

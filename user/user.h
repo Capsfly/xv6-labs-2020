@@ -40,5 +40,9 @@ void free(void*);
 int atoi(const char*);
 int memcmp(const void *, const void *, uint);
 void *memcpy(void *, const void *, uint);
+/*
+void i2a(int,char*);
 
-char* itoa(int);
+void myStrCat(char*,char*,char *);
+
+*/

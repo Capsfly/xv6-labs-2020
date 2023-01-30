@@ -1,5 +1,5 @@
 #include "common_kernel_head.h"
-#include "kernel/fcntl.h"
+#include "/home/suichunyu/Desktop/xv6-labs-2020/kernel/fcntl.h"
 
 
 char*
@@ -131,17 +131,16 @@ memcpy(void *dst, const void *src, uint n)
 {
   return memmove(dst, src, n);
 }
-
-char* itoa(int val)
+/*
+void i2a(int val,char *arr)
 {
 
-    char* arr= (char*)malloc(20);
     int temp_val=val;
     if(val==0)
     {
         arr[0]='0';
         arr[1]='\0';
-        return arr;
+
     }
     else
     {
@@ -160,7 +159,21 @@ char* itoa(int val)
             val/=10;
         }
 
-        return arr;
     }
 }
 
+void myStrCat(char* str1,char* str2,char *dest)
+{
+    int idx=0;
+    for(int i=0;str1[i]!='\0';i++)
+    {
+        dest[idx++]=str1[i];
+    }
+    for(int i=0;str2[i]!='\0';i++)
+    {
+        dest[idx++]=str2[i];
+    }
+    dest[idx]='\0';
+}
+
+*/
