@@ -1,7 +1,6 @@
-#include "kernel/types.h"
-#include "kernel/stat.h"
+#include "common_kernel_head.h"
 #include "kernel/fcntl.h"
-#include "user/user.h"
+
 
 char*
 strcpy(char *s, const char *t)
@@ -132,3 +131,35 @@ memcpy(void *dst, const void *src, uint n)
 {
   return memmove(dst, src, n);
 }
+
+char* itoa(int val)
+{
+    char* arr= (char*)malloc(20);
+    int temp_val=val;
+    if(val==0)
+    {
+        arr[0]='0';
+        arr[1]='\0';
+        return arr;
+    }
+    else
+    {
+        int cnt=0;
+
+        while(temp_val)
+        {
+            cnt++;
+            temp_val/=10;
+        }
+
+        arr[cnt]='\0';
+        for(int i=cnt-1;i>=0;i--)
+        {
+            arr[i]=val%10+'0';
+            val/=10;
+        }
+
+        return arr;
+    }
+}
+
