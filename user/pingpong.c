@@ -34,9 +34,9 @@ int main()
     {
         char test[150];
 
-        int cnt=read(fields1[0], test,8);
-        printf("%d",cnt);
-        printf("%s",test);
+        int cnt=read(fields1[0], test,14);
+        printf("%d\n",cnt);
+        printf("%s\n",test);
 
         char read_buf[150];
         i2a(getpid(),read_buf);
@@ -46,9 +46,9 @@ int main()
         strcpy(read_buf+ strlen(read_buf),test);
         //read(fields1[0], read_buf + strlen(read_buf), sizeof(read_buf) - sizeof(char) * strlen(read_buf));
 
-        fprintf(2,read_buf);
+        printf("%s\n", read_buf);
 
-        char send_data[50]="received pong";
+//        char send_data[50]="received pong";
 
 //        write(fields2[1], send_data, sizeof(send_data));
 
