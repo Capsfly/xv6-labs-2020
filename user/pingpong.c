@@ -34,7 +34,7 @@ int main()
 
         read(fields2[0], read_buf + strlen(read_buf), sizeof(read_buf) - sizeof(char) * strlen(read_buf));
 
-        printf("%d: received pong",getpid());
+        printf("%d: received pong\n",getpid());
 //        fprintf(2,read_buf); maybe some bugs here
     }
     else//pid==0
@@ -55,4 +55,3 @@ int main()
     exit(0);
 
 }
-
