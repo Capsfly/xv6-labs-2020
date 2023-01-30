@@ -14,6 +14,7 @@ int main(int argc, char const *argv[])
         sleep(time);
         exit(0);
         //qaq
+
     }
 
 }
