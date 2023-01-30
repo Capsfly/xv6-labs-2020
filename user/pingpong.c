@@ -6,20 +6,14 @@
 #define NULL 0
 int main()
 {
-    int pid=fork();
 
     int fields1[2];//father process sends data to son
     pipe(fields1);
 
-    int fields2[2];//son process sends data to father
-    pipe(fields2);
+//    int fields2[2];//son process sends data to father
+//    pipe(fields2);
 
-    if(pid<0)
-    {
-        fprintf(2,"error\n");
-        exit(1);
-    }
-    else if(pid>0)
+    if(fork()>0)
     {
         char send_data[]="received ping";
 
@@ -32,7 +26,7 @@ int main()
 
         strcpy(read_buf+ strlen(read_buf),":");
 
-        read(fields2[0], read_buf + strlen(read_buf), sizeof(read_buf) - sizeof(char) * strlen(read_buf));
+//        read(fields2[0], read_buf + strlen(read_buf), sizeof(read_buf) - sizeof(char) * strlen(read_buf));
 
         fprintf(2,read_buf);
     }
@@ -56,27 +50,10 @@ int main()
 
         char send_data[50]="received pong";
 
-        write(fields2[1], send_data, sizeof(send_data));
+//        write(fields2[1], send_data, sizeof(send_data));
 
     }
     exit(0);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
