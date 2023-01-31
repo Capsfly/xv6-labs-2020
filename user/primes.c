@@ -10,7 +10,7 @@ void seive(int fa2node[2])
 {
     int must_is_prime;
     read(fa2node[0], &must_is_prime, sizeof (must_is_prime));
-
+    close(fa2node[1]);
     if(must_is_prime==EOP)
     {
         exit(0);
@@ -28,8 +28,6 @@ void seive(int fa2node[2])
     }
     else if(id==0)//son process
     {
-        close(fa2node[1]);
-
         seive(node2son);
         exit(0);
     }
