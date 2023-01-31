@@ -30,15 +30,12 @@ void seive(int fa2node[2])
     {
         close(node2son[1]);
 
-        close(fa2node[1]);
-        close(fa2node[0]);
-
-
         seive(node2son);
         exit(0);
     }
     else//parent process
     {
+
         int now_val;
         while(1)
         {
