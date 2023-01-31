@@ -28,14 +28,14 @@ void seive(int fa2node[2])
     }
     else if(id==0)//son process
     {
-        close(node2son[1]);
+        close(fa2node[1]);
 
         seive(node2son);
         exit(0);
     }
     else//parent process
     {
-
+        close(node2son[0]);
         int now_val;
         while(1)
         {
@@ -49,8 +49,11 @@ void seive(int fa2node[2])
                 write(node2son[1],&now_val, sizeof(now_val));
             }
         }
+        close(fa2node[0]);
         now_val=EOP;
         write(node2son[1],&now_val, sizeof(now_val));
+        close(node2son[1]);
+        wait(NULL);
         exit(0);
     }
 }
@@ -64,10 +67,13 @@ int main()
     {
         write(input_pipes[1],&i, sizeof(i));
     }
+
     int eop=EOP;
     write(input_pipes[1],&eop, sizeof(eop));
     close(input_pipes[1]);
     seive(input_pipes);
+    wait(NULL);
+    close(input_pipes[0]);
 
-
+    exit(0);
 }
