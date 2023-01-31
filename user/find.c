@@ -54,6 +54,7 @@ void find(char *path,char* target_name)
             if(strcmp(obj_name,target_name)==0)
             {
 
+
             }
             printf("%s %d %d %l\n", fmtname(path), st.type, st.ino, st.size);
 
