@@ -50,3 +50,14 @@ void print_prime(int val)
 {
     printf("prime %d\n",val);
 }
+
+
+
+void get_file_name(char*path,char*name)
+{
+    char* ptr;
+    char* end_of_path=path+ strlen(path);
+    for(ptr=path+ strlen(path);ptr>=path&&*ptr!='/';ptr--);
+    ptr++;
+    memmove(name,ptr,end_of_path-ptr+1);
+}
