@@ -68,5 +68,5 @@ add_executable(xv6_labs_2020
         user/user.h
         user/usertests.c
         user/wc.c
-        user/zombie.c user/sleep.c user/common_kernel_head.h user/pingpong.c user/my_function.c)
+        user/zombie.c user/sleep.c user/common_kernel_head.h user/pingpong.c user/my_function.c user/primes.c)
 

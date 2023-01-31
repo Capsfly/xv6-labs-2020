@@ -1,6 +1,7 @@
 //
 // Created by suichunyu on 1/29/23.
 //
+#include "common_kernel_head.h"
 void i2a(int val,char *arr)
 {
 
@@ -43,4 +44,9 @@ void myStrCat(char* str1,char* str2,char *dest)
         dest[idx++]=str2[i];
     }
     dest[idx]='\0';
+}
+
+void print_prime(int val)
+{
+    printf("prime %d\n",val);
 }
