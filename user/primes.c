@@ -10,7 +10,7 @@ void seive(int fa2node[2])
 {
     int must_is_prime;
     read(fa2node[0], &must_is_prime, sizeof (must_is_prime));
-    close(fa2node[1]);
+
     if(must_is_prime==EOP)
     {
         exit(0);
@@ -18,9 +18,12 @@ void seive(int fa2node[2])
     print_prime(must_is_prime);
 
     int node2son[2];
+
+    close(fa2node[1]);
     pipe(node2son);
 
     int id=fork();
+
     if(id<0)
     {
         printf("fork error\n");
