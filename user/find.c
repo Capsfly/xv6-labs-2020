@@ -46,6 +46,7 @@ void find(char *path,char* target_name)
         close(fd);
         return;
     }
+
     char obj_name[100];
     switch(st.type)
     {
@@ -53,11 +54,8 @@ void find(char *path,char* target_name)
             get_file_name(path, obj_name);
             if(strcmp(obj_name,target_name)==0)
             {
-
-
+                printf("%s\n",path);
             }
-            printf("%s %d %d %l\n", fmtname(path), st.type, st.ino, st.size);
-
             break;
 
         case T_DIR:// Directory
@@ -85,7 +83,11 @@ void find(char *path,char* target_name)
                     printf("ls: cannot stat %s\n", buf);
                     continue;
                 }
-                printf("%s %d %d %d\n", fmtname(buf), st.type, st.ino, st.size);
+                //buf is path, st is the type
+                if(strcmp(de.name,".")!=0&& strcmp(de.name,"..")!=0)
+                {
+                    find(buf,target_name);
+                }
             }
             break;
     }
