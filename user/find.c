@@ -47,7 +47,7 @@ void find(char *path,char* target_name)
         return;
     }
 
-    char obj_name[100];
+    char obj_name[520];
     switch(st.type)
     {
         case T_FILE://file
@@ -76,18 +76,13 @@ void find(char *path,char* target_name)
                 memmove(p, de.name, DIRSIZ);//move target_name
                 p[DIRSIZ] = 0;//set end of char[]
                 //buf stores the absolute path
-                if(stat(buf, &st) < 0)
-                {
-                    //stat:Get file attributes for the file, device, pipe, or socket
-                    //that file descriptor FD is open on and put them in BUF.
-                    printf("ls: cannot stat %s\n", buf);
-                    continue;
-                }
+
                 //buf is path, st is the type
                 if(strcmp(de.name,".")!=0&& strcmp(de.name,"..")!=0)
                 {
                     find(buf,target_name);
                 }
+
             }
             break;
     }
@@ -96,8 +91,16 @@ void find(char *path,char* target_name)
 
 int main(int argc, char *argv[])
 {
-
-    exit(0);
+    if(argc<3)
+    {
+        printf("error\n");
+        exit(1);
+    }
+    else
+    {
+        find(argv[1],argv[2]);
+        exit(0);
+    }
 }
 
 
