@@ -23,9 +23,17 @@ char* fmtname(char *path)
     memset(buf+strlen(p), ' ', DIRSIZ-strlen(p));
     return buf;
 }
-
+int cnt=0;
 void find(char *path,char* target_name)
 {
+    printf("%d\n",++cnt);
+    /*char debug_name[512];
+    get_file_name(path,debug_name);
+    if(strcmp(debug_name,"README")==0)
+    {
+
+    }*/
+    //printf("path==%s,target_name==%s\n",path,target_name);
     char buf[512], *p;
     int fd;
     struct dirent de;
@@ -79,7 +87,7 @@ void find(char *path,char* target_name)
 
                 //buf is path, st is the type
                 if(strcmp(de.name,".")!=0&& strcmp(de.name,"..")!=0)
-                {
+                {//?de.name
                     find(buf,target_name);
                 }
 
@@ -87,11 +95,12 @@ void find(char *path,char* target_name)
             break;
     }
     close(fd);
+    exit(0);
 }
 
 int main(int argc, char *argv[])
 {
-    if(argc<3)
+    if(argc!=3)
     {
         printf("error\n");
         exit(1);
@@ -102,7 +111,6 @@ int main(int argc, char *argv[])
         exit(0);
     }
 }
-
 
 
 
